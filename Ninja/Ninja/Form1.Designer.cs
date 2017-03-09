@@ -43,6 +43,7 @@
             this.btnAddAchievement = new System.Windows.Forms.Button();
             this.btnEditGame = new System.Windows.Forms.Button();
             this.lblLeaderboard = new System.Windows.Forms.Label();
+            this.btnShowLog = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -176,11 +177,21 @@
             this.lblLeaderboard.TabIndex = 14;
             this.lblLeaderboard.Text = "Leaderboard :";
             // 
+            // btnShowLog
+            // 
+            this.btnShowLog.Location = new System.Drawing.Point(409, 6);
+            this.btnShowLog.Name = "btnShowLog";
+            this.btnShowLog.Size = new System.Drawing.Size(142, 33);
+            this.btnShowLog.TabIndex = 15;
+            this.btnShowLog.Text = "Show Log";
+            this.btnShowLog.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(948, 757);
+            this.Controls.Add(this.btnShowLog);
             this.Controls.Add(this.lblLeaderboard);
             this.Controls.Add(this.btnEditGame);
             this.Controls.Add(this.btnAddAchievement);
@@ -222,6 +233,7 @@
         private System.Windows.Forms.Button btnAddAchievement;
         private System.Windows.Forms.Button btnEditGame;
         private System.Windows.Forms.Label lblLeaderboard;
+        private System.Windows.Forms.Button btnShowLog;
     }
 }
 
