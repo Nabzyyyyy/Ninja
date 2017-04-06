@@ -12,7 +12,7 @@ namespace Ninja
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        public Form1() // constructor
         {
             InitializeComponent();
 
@@ -21,6 +21,11 @@ namespace Ninja
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void cboBoxGame_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //string curGame = cboBoxGame.Text;
         }
     }
 }

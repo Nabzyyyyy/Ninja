@@ -63,6 +63,7 @@
             this.cboBoxGame.Name = "cboBoxGame";
             this.cboBoxGame.Size = new System.Drawing.Size(205, 33);
             this.cboBoxGame.TabIndex = 1;
+            this.cboBoxGame.SelectedIndexChanged += new System.EventHandler(this.cboBoxGame_SelectedIndexChanged);
             // 
             // cboBoxKiller
             // 
