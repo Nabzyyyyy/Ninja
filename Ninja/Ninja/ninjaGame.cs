@@ -9,11 +9,18 @@ namespace Ninja
     public class ninjaGame
     {
         public static int totalScore;
-        public static List<int> gamesList;
+        public static List<string> gamesList;
+        public static List<string> players;
         Form1 myform;
 
         ninjaGame(Form1 myform) {
             this.myform = myform;
+        }
+
+        
+        public void updateLeaderboard() {
+            players.Sort();
+            myform.Update();
         }
 
         public string currentGame() {

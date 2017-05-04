@@ -9,3 +9,4 @@ C:\Users\nsawa\OneDrive\documents\visual studio 2015\Projects\Ninja\Ninja\obj\De
 C:\Users\nsawa\OneDrive\documents\visual studio 2015\Projects\Ninja\Ninja\obj\Debug\Ninja.csproj.GenerateResource.Cache
 C:\Users\nsawa\OneDrive\documents\visual studio 2015\Projects\Ninja\Ninja\obj\Debug\Ninja.exe
 C:\Users\nsawa\OneDrive\documents\visual studio 2015\Projects\Ninja\Ninja\obj\Debug\Ninja.pdb
+C:\Users\nsawa\OneDrive\documents\visual studio 2015\Projects\Ninja\Ninja\obj\Debug\Ninja.Forms.editForm.resources

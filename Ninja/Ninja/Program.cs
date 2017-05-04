@@ -33,12 +33,12 @@ namespace Ninja
                 SQLiteConnection.CreateFile(dir);
             }
             // open the sqlite connection
-            conn.Open();
+            //conn.Open();
 
 
 
             // close the sqlite connection
-            conn.Close();
+            //conn.Close();
         }
 
             // create the sqlite connection

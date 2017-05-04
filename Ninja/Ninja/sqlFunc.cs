@@ -19,7 +19,10 @@ namespace Ninja
         // public static List<string> participants(string)
 
         public static string cmd;
+        public static int k;
+        //public static int d;
         public static int cnt;
+        
 
         // adds user to database if they're not already in there -- does not allow more than
         // one player with the same name (Should use both first and last name)
@@ -48,7 +51,8 @@ namespace Ninja
 
 
         public static void createUserTable() { // creates table of users (should only need to call once)
-            // checks if user table exists
+            Program.conn.Open();
+                // checks if user table exists
             cmd = "SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'users'";
             SQLiteCommand check = new SQLiteCommand(cmd, Program.conn);
             if (Convert.ToInt32(check) == 0) {
@@ -153,7 +157,7 @@ namespace Ninja
 
             cmd = "SELECT name FROM sqlite_master WHERE type = 'table' AND name = " + gameName;
             SQLiteCommand check = new SQLiteCommand(cmd, Program.conn);
-            if (Convert.ToInt32(check) == 0)
+            if (Convert.ToInt32(check) != 0)
                 // ADD : alert user that gameName already exists and to create a game with a different name
                 return;
             else {
@@ -161,16 +165,20 @@ namespace Ninja
                 SQLiteCommand createTable = new SQLiteCommand(cmd, Program.conn);
             }
             Program.conn.Close();
+            ninjaGame.gamesList.Add(gameName);
+
             return;
             
         }
 
+        
 
         public static List<string> participants(string gameName) {
             Program.conn.Open(); // open connection
-        
-            // FIRST FIND THE CURRENT GAME INSTANCE ID
-            // THEN QUERY PARTIPANTS TABLE FOR ALL USERS WITH THAT ID
+
+            //Form1 myform = new Form1();
+            //string gName = myform.getGameName();
+
             List<string> ppl = new List<string>();
             cmd = "SELECT name FROM sqlite_master WHERE type = 'table' AND name = " + gameName;
             SQLiteCommand check = new SQLiteCommand(cmd, Program.conn);
@@ -192,6 +200,72 @@ namespace Ninja
             return ppl;
         }
 
+        public static void AddKill(string killer, string victim, string gameName)
+        {
+            Program.conn.Open();
+
+            cmd = "SELECT kills FROM " + gameName + " WHERE name = " + killer;
+            SQLiteCommand check = new SQLiteCommand(cmd, Program.conn);
+            if (Convert.ToInt32(check) == 0)
+                return;
+            else {
+                k += 1;
+                // ADD ACTUAL ADD KILL FUNCTIONALITY 
+                cmd = "INSERT into " + gameName + " " + k + " where name = " + killer;
+                check = new SQLiteCommand(cmd, Program.conn);
+
+                //cmd = "INSERT into " + gameName + " (id INT, name STRING, score INT, kills INT, deaths INT)";
+                SQLiteCommand createTable = new SQLiteCommand(cmd, Program.conn);
+
+                Program.conn.Close();
+
+                return;
+            }
+            cmd = "SELECT deaths FROM " + gameName + " WHERE name = " + victim;
+            check = new SQLiteCommand(cmd, Program.conn);
+            if (Convert.ToInt32(check) == 0)
+                return;
+            else {
+                k -= 1;
+                cmd = "INSERT into " + gameName + " " + k + " where name = " + victim;
+                check = new SQLiteCommand(cmd, Program.conn);
+            }
+            ninjaGame nG;
+            nG.updateLeaderboard();
+            //ninjaGame.updateLeaderboard();
+        }
+
+        public static void AddAchievement(string killer, string achievement, string gameName)
+        {
+            string id = "";
+            Program.conn.Open();
+
+            cmd = "SELECT id FROM achievements WHERE name = " + achievement;
+            SQLiteCommand check = new SQLiteCommand(cmd, Program.conn);
+            if (Convert.ToInt32(check) == 0)
+                return;
+            else {
+                
+                k += 1;
+                cmd = "SELECT from userAchievements cnt WHERE name = " + killer;
+                check = new SQLiteCommand(cmd, Program.conn);
+                //cmd = "INSERT into " + gameName + " (id INT, name STRING, score INT, kills INT, deaths INT)";
+                SQLiteCommand createTable = new SQLiteCommand(cmd, Program.conn);
+
+                Program.conn.Close();
+
+                return;
+            }
+            cmd = "INSERT into userAchievements " + k + " where name = " + killer + " and " + id + " = achievementID";
+            check = new SQLiteCommand(cmd, Program.conn);
+            if (Convert.ToInt32(check) == 0)
+                return;
+            else {
+            }
+            ninjaGame nG;
+            nG.updateLeaderboard();
+            //ninjaGame.updateLeaderboard();
+        }
         //public static List<string> Tables (this SQLiteConnection conn)
         //{
         //    string qry = "SELECT name FROM sqlite_master";
@@ -212,7 +286,7 @@ namespace Ninja
 
         //    try
         //    {
-                
+
         //    }
 
         //    SQLiteCommand check = new SQLiteCommand(cmd, Program.conn);
